@@ -1,3 +1,17 @@
+const sektor = new Sektor('.sector', {
+  angle: 0,
+  stroke: 2,
+  arc: true,
+  fillCircle: false,
+  sectorColor: 'black'
+});
+
+const getColor = percentage => {
+    let value = percentage /= 100;
+    let hue = (value * 120).toString(10);
+    return `hsl(${hue}, 70%, 50%)`;
+}
+
 const calculatePercentage = () => {
   let start = timeToMinutes(document.getElementById('start').value);
   let end = timeToMinutes(document.getElementById('end').value);
@@ -7,7 +21,12 @@ const calculatePercentage = () => {
     let minutes = now.getMinutes() + now.getHours() * 60 + now.getSeconds() / 60;
 
     let percent = Math.round((minutes - start) / (end - start) * 10000) / 100;
-    document.getElementById('percentage').textContent = percent < 100 && percent >= 0 ? percent : 100;
+
+    //clamp between 0 and 100
+    percent = Math.min(Math.max(percent, 0), 100);
+    sektor.animateTo(percent * 3.6, 500);
+    sektor.changeColor(getColor(percent));
+    document.getElementById('percentage').textContent = percent;
   }
 };
 
