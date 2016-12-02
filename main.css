@@ -1,0 +1,18 @@
+.sector {
+  display: inline-block;
+  height: 50vh;
+  width: 50vh;
+}
+
+h1 {
+  color: #DDD;
+  font-family: 'Roboto';
+  font-size: 6vh;
+  position: relative;
+  top: 31vh; /* (sector height / 2) + font-size*/
+}
+
+body {
+  text-align: center;
+  background-color: #333333;
+}

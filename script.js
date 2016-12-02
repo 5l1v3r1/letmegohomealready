@@ -1,9 +1,10 @@
 const sektor = new Sektor('.sector', {
   angle: 0,
-  stroke: 2,
+  stroke: 3,
   arc: true,
   fillCircle: false,
-  sectorColor: 'black'
+  sectorColor: 'black',
+  circleColor: '#444444'
 });
 
 const getColor = percentage => {
